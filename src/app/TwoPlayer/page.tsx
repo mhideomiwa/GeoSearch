@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
-import Map from '../components/map';
+// import GuessMap from '../components/GuessMap';
+import HideMap from "@/app/components/HideMap";
 
 const Page = () => {
     return (
         <div>
-            Two Player
-            <Map/>
+            <HideMap/>
         </div>
     );
 };
