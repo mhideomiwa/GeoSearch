@@ -6,35 +6,14 @@ import {APIProvider, Map} from '@vis.gl/react-google-maps';
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
 
-const GuessMap = () => {
-
-
-    // const handleHideLocation = (event: MouseEvent<HTMLButtonElement>)  => void{
-    //     console.log("clicked")
-    // }
-
-    // const mapOptions = {
-    //     styles: [
-    //         {
-    //             featureType: "poi",
-    //             elementType: "labels",
-    //             stylers: [{ visibility: "off" }]
-    //         },
-    //         {
-    //             featureType: "landscape",
-    //             elementType: "labels",
-    //             stylers: [{ visibility: "off" }]
-    //         }
-    //     ]
-    // };
-
-    // if (!isLoaded) return <p>Loading...</p>;
+const HiderMap = () => {
 
     return (
         <>
             <APIProvider apiKey={API_KEY}>
                 <Map
-                    style={{width: '100vw', height: '87vh'}}
+                    mapId={'afb641b9e0b85f94'}
+                    style={{width: '100%', height: '100%'}}
                     defaultCenter={{lat: 22.54992, lng: 0}}
                     defaultZoom={3}
                     gestureHandling={'greedy'}
@@ -49,4 +28,4 @@ const GuessMap = () => {
     );
 };
 
-export default GuessMap;
+export default HiderMap;

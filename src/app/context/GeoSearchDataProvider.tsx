@@ -1,3 +1,5 @@
+'use client';
+
 /*----------------------------------------------------------------------
  *                      IMPORTS
  */
@@ -12,16 +14,20 @@ import {GeoSearchDataContext} from "@/app/context/GeoSearchData";
 export function GeoSearchDataProvider({ children }: { children: ReactNode }) {
     const { isLoading } = { isLoading: false };
     const [geoplaces, setGeoplaces] = useState(null as GeoPlaces | null);
+    const [isHidden, setIsHidden] = useState(false);
 
     return (
-        <GeoSearchDataContext
+        <GeoSearchDataContext.Provider
             value={{
                 geoplaces,
                 setGeoplaces,
                 isLoading,
+                isHidden,
+                setIsHidden,
             }}
         >
             {children}
-        </GeoSearchDataContext>
+        </GeoSearchDataContext.Provider>
+
     );
 }

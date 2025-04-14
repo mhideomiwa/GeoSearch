@@ -1,5 +1,6 @@
 //reconfigured from in-class scriptures mapped
 
+'use client';
 /*----------------------------------------------------------------------
  *                      IMPORTS
  */
