@@ -40,9 +40,9 @@ const GuessMap = () => {
                     gestureHandling={'greedy'}
                     disableDefaultUI={true}
                     streetViewControl={true}
-                    streetViewControlOptions={{
-                        position: google.maps.ControlPosition.RIGHT_BOTTOM // Positioning the Street View control at the bottom right
-                    }}
+                    // streetViewControlOptions={{
+                    //     position: google.maps.ControlPosition.RIGHT_BOTTOM // Positioning the Street View control at the bottom right
+                    // }}
                 />
             </APIProvider>
         </>
