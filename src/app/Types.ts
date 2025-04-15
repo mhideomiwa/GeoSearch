@@ -1,14 +1,14 @@
 export type GeoSearchDataContextType = {
-    setGeoplaces: (geoplaces: GeoPlaces | null) => void;
-    geoplaces: GeoPlaces | null;
+    hiderPosition?: GeoPlace;
+    setHiderPosition?: (hiderPosition: GeoPlace) => void;
     isLoading: boolean;
+    setIsLoading: (isLoading: boolean) => void;
     isHidden: boolean;
     setIsHidden: (isHidden: boolean) => void;
+    guessPosition?: GeoPlace;
+    setGuessPosition?: (guessPosition: GeoPlace) => void;
 };
 export interface GeoPlace {
-    latitude: number;
-    longitude: number;
-}
-export interface GeoPlaces {
-    [key: string]: GeoPlace;
+    lat: number;
+    lng: number;
 }

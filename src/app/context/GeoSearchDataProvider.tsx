@@ -4,7 +4,7 @@
  *                      IMPORTS
  */
 import { ReactNode, useState } from "react";
-import { GeoPlaces } from "../Types";
+import {  } from "../Types";
 import {GeoSearchDataContext} from "@/app/context/GeoSearchData";
 
 //reconfigured from in-class scriptures mapped
@@ -12,18 +12,22 @@ import {GeoSearchDataContext} from "@/app/context/GeoSearchData";
  *                      COMPONENT
  */
 export function GeoSearchDataProvider({ children }: { children: ReactNode }) {
-    const { isLoading } = { isLoading: false };
-    const [geoplaces, setGeoplaces] = useState(null as GeoPlaces | null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [hiderPosition, setHiderPosition] = useState({ lat: 40.770141396880064, lng: -111.88830252056056 });
+    const [guessPosition, setGuessPosition] = useState({ lat: 0, lng: 0 });
     const [isHidden, setIsHidden] = useState(false);
 
     return (
         <GeoSearchDataContext.Provider
             value={{
-                geoplaces,
-                setGeoplaces,
+                hiderPosition,
+                setHiderPosition,
                 isLoading,
+                setIsLoading,
                 isHidden,
                 setIsHidden,
+                guessPosition,
+                setGuessPosition,
             }}
         >
             {children}
@@ -31,3 +35,6 @@ export function GeoSearchDataProvider({ children }: { children: ReactNode }) {
 
     );
 }
+
+//hiderPosition: GeoPlace;
+//     setHiderPosition: (hiderPosition: GeoPlace) => void;

@@ -1,20 +1,17 @@
     'use client';
     import React from 'react';
     import HiderMap from "@/app/components/HiderMap";
-    import HiderButton from "@/app/components/HiderButton";
     import {useGeoSearchContext} from "../context/GeoSearchContextHookData";
-
 
 
     const Page = () => {
         const {isHidden, setIsHidden} = useGeoSearchContext();
+
+
         if (!isHidden) {
             return (
                 <div className="relative w-full" style={{ height: 'calc(100vh - 70px)' }}>
                     <HiderMap />
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
-                        <HiderButton />
-                    </div>
                 </div>
             );
         }
