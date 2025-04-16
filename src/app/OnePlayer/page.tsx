@@ -15,19 +15,9 @@ const Page = () => {
         const generateHidingPosition = async () => {
             try {
                 const response = await fetch("/api/random-position");
-                const xmlText = await response.text();
 
-                // Parse the XML string
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(xmlText, "application/xml");
 
-                // Extract <lat> and <lng> elements
-                const lat = parseFloat(xmlDoc.getElementsByTagName("latt")[0]?.textContent || "");
-                const lng = parseFloat(xmlDoc.getElementsByTagName("longt")[0]?.textContent || "");
-
-                console.log("Parsed lat/lng: ", lat, lng);
-
-                if (!isNaN(lat) && !isNaN(lng)) {
+                if (!isNaN(response.lat) && !isNaN(response.lng)) {
                     setHiderPosition!({ lat, lng });
                     setIsLoading!(false);
                 } else {
