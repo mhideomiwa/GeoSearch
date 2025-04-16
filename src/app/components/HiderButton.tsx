@@ -10,7 +10,7 @@ const HiderButton = ({lat,lng} : GeoPlace) => {
         if (setHiderPosition) {
             setIsHidden(true);
             setHiderPosition({lat, lng});
-            console.log("Hiding place set to: ", lat, lng);
+            // console.log("Hiding place set to: ", lat, lng);
         }
         else {
             console.error("setHiderPosition is not defined");

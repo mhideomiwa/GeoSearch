@@ -16,7 +16,7 @@ const StreetViewWatcher = () => {
     const [isStreetView, setIsStreetView] = useState(false);
     const [pegmanPosition, setPegmanPosition] = useState({lat: 0, lng: 0});
 
-    useEffect(() => { //I originally put this in by hand, but it wasn't working, so chatGPT fixed it for me.  I have since added the listeners for the position.
+    useEffect(() => { //I originally put this in by hand/with predictive AI, but it wasn't working, so chatGPT fixed it for me.  I have since added the listeners for the position.
         if (!map || !streetViewLib) return;
 
         const panorama = map.getStreetView(); //ChatGPT fixed this for me. I thought I did it more or less the same.  No sure what the problem was
