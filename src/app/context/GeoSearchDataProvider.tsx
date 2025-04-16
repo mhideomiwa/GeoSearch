@@ -13,7 +13,7 @@ import {GeoSearchDataContext} from "@/app/context/GeoSearchData";
  */
 export function GeoSearchDataProvider({ children }: { children: ReactNode }) {
     const [isLoading, setIsLoading] = useState(true);
-    const [hiderPosition, setHiderPosition] = useState({ lat: 40.770141396880064, lng: -111.88830252056056 });
+    const [hiderPosition, setHiderPosition] = useState({ lat: 0, lng: 0 });
     const [guessPosition, setGuessPosition] = useState({ lat: 0, lng: 0 });
     const [isHidden, setIsHidden] = useState(false);
 

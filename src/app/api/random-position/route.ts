@@ -1,41 +1,19 @@
 // src/app/api/random-position/route.ts
+import { NextResponse } from 'next/server';
+import { XMLParser } from 'fast-xml-parser'; //recommended by chatGPT for XML parsing
 
 export async function GET() {
-    const TestLocation =  () => {
-        const res = await fetch('https://api.3geonames.org/?randomland=yes');
-        const data = await res.text(); // XML string
-        const sv = new google.maps.StreetViewService();
+    const res = await fetch('https://api.3geonames.org/?randomland=yes');
+    const xmlText = await res.text();
 
-        const xmlText =  data;
+    const parser = new XMLParser();
+    const json = parser.parse(xmlText);
+    console.log("API response:", json);
 
-        // Parse the XML string
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+    const lat = parseFloat(json.geodata.nearest.latt || '');
+    const lng = parseFloat(json.geodata.nearest.longt || '');
 
-        // Extract <lat> and <lng> elements
-        const lat = parseFloat(xmlDoc.getElementsByTagName("latt")[0]?.textContent || "");
-        const lng = parseFloat(xmlDoc.getElementsByTagName("longt")[0]?.textContent || "");
+    console.log("API returned lat/lng:", lat, lng);
 
-        console.log("Parsed lat/lng: ", lat, lng);
-        sv.getPanorama({
-            location: new google.maps.LatLng(lat, lng),
-            radius: 50,
-        }, (data, status) => {
-            if (status === google.maps.StreetViewStatus.OK) {
-                console.log("Street View data found.");
-                return { lat, lng };
-            } else {
-                console.error("Street View data not found.");
-                return null;
-            }
-        })
-    }
-
-    if(TestLocation() !== null) {
-        console.log("Test location found");
-
-    }
-
-
-
+    return NextResponse.json({ lat, lng });
 }

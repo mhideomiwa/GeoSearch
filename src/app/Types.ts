@@ -1,6 +1,6 @@
 export type GeoSearchDataContextType = {
     hiderPosition?: GeoPlace;
-    setHiderPosition?: (hiderPosition: GeoPlace) => void;
+    setHiderPosition: (hiderPosition: GeoPlace) => void;
     isLoading: boolean;
     setIsLoading: (isLoading: boolean) => void;
     isHidden: boolean;
