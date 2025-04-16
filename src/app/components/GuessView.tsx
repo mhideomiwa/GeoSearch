@@ -46,7 +46,7 @@ const StreetViewInitializer = () => {
             streetView.setVisible(true);
         }
 
-    }, [map, streetViewLib, hiderPosition]);
+    }, [map, streetViewLib, hiderPosition, generateHidingPosition]);
 
     return null;
 };

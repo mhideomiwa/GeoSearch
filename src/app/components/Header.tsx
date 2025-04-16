@@ -2,6 +2,7 @@
 import React from 'react'
 import Link from "next/link";
 import { useGeoSearchContext } from "@/app/context/GeoSearchContextHookData";
+import Image from "next/image";
 
 function Header() {
     const { setIsHidden, setHiderPosition, setGuessPosition, setIsLoading } = useGeoSearchContext();
@@ -16,7 +17,7 @@ function Header() {
     return (
         <div className="space-x-4 p-2.5">
             <Link href='/' onClick={reset} className="flex items-center">
-                <img src="/logo.svg" alt="Logo" className="w-16 h-16" />
+                <Image src={'/logo.svg'} alt={'Map Icon'} width={100} height={100} />
                 <div>
                     <h1 className="text-4xl font-bold">Geo Search</h1>
                 </div>
