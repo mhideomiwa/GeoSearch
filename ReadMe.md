@@ -1,0 +1,4 @@
+My project is a version of the popular game "GeoGuessr". When the user enters the site, there are options for 1 or 2 player games.  In the 2 player game, one player will close there eyes or look away for a few seconds while the other player drops a google street view peg man in a place of their choosing. Then the other player will open their eyes, and guess where the street view is, and drop a pin on it. The closer they get, the more points.  The 1 player version drops the player into google street view in a random location, and they have to guess their location based on the clues they can get from looking around.
+To run this locally, after install, the user has to insert a .env.local file and put "NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=[YOUR_GOOGLE_MAPS_API]"
+This uses the Google Maps api via visgl and https://api.3geonames.org/?randomland=yes
+This also uses local memory to store some settings (whether they want the instructions every time or not)
