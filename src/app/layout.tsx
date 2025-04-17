@@ -32,9 +32,17 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
+            <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+
             <ErrorBoundary FallbackComponent={ErrorFallback}>
                 <Header/>
-                {children}
+                <div
+                    className="min-h-[100dvh] sm:min-h-[100dvh] h-[90dvh] px-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]"
+                >
+                    {children}
+                </div>
+
+
             </ErrorBoundary>
             </body>
             </html>

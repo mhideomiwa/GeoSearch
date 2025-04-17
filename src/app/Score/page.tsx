@@ -70,7 +70,11 @@ const Page = () => {
             <div
                 className="absolute top-1/6 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 text-white px-6 py-3 rounded-2xl shadow-lg backdrop-blur z-10">
                 <h1 className="text-2xl font-semibold tracking-wide">
-                    Distance: <span className="text-yellow-400">{distance}</span> miles
+                    Distance: <span className="text-yellow-400">{
+                        distance < 1
+                        ? `${Math.round(distance * 52580 )} feet`
+                            : `${distance} miles`
+                    }</span>
                 </h1>
             </div>
             <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
