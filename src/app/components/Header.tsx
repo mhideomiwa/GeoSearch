@@ -14,10 +14,10 @@ function Header() {
         setIsLoading(true);
     }
 
-    const resetLocalStorage = () => {
-        localStorage.getItem('skipOnePlayerInstructions');localStorage.removeItem('skipOnePlayerInstructions')
-        localStorage.getItem('skipTwoPlayerInstructions');localStorage.removeItem('skipTwoPlayerInstructions')
-    }
+    // const resetLocalStorage = () => {
+    //     localStorage.getItem('skipOnePlayerInstructions');localStorage.removeItem('skipOnePlayerInstructions')
+    //     localStorage.getItem('skipTwoPlayerInstructions');localStorage.removeItem('skipTwoPlayerInstructions')
+    // } //Just for testing
 
     return (
         <div className="space-x-4 p-1 flex items-center">
@@ -29,9 +29,9 @@ function Header() {
             </Link>
 
 
-            <div className='bg-red-600 cursor-pointer text-white font-bold rounded-2xl' onClick={resetLocalStorage}>
-                RESET LOCAL STORAGE
-            </div>
+            {/*<div className='bg-red-600 cursor-pointer text-white font-bold rounded-2xl' onClick={resetLocalStorage}>*/}
+            {/*    RESET LOCAL STORAGE*/}
+            {/*</div>*/}
         </div>
     );
 }

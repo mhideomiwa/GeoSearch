@@ -7,9 +7,11 @@ import GuessMap from "@/app/components/GuessMap";
 import Image from "next/image";
 import { TwoPlayerInstructions } from "@/app/components/TwoPlayerInstructions";
 import { TwoPlayerCountDown } from "@/app/components/TwoPlayerCountDown";
+import {router} from "next/client";
+
 
 const Page = () => {
-    const { isHidden } = useGeoSearchContext();
+    const { isHidden, isError } = useGeoSearchContext();
     const [makeGuess, setMakeGuess] = useState(false);
     const [ready, setReady] = useState(false);
     const [countdownFinished, setCountdownFinished] = useState(false);
@@ -34,6 +36,12 @@ const Page = () => {
             return () => clearTimeout(timer);
         }
     }, [countdownFinished]);
+
+    useEffect(() => {
+        if (isError) {
+            router.replace('/Error'); // Or navigate to whatever your error route is
+        }
+    }, [isError, router]);
 
     if (!ready) {
         return <TwoPlayerInstructions setReady={setReady} />;

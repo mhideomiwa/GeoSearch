@@ -7,11 +7,13 @@ import { LoadingPage } from "@/app/components/LoadingPage";
 import Image from "next/image";
 import GuessMap from "@/app/components/GuessMap";
 import {OnePlayerInstructions} from "@/app/components/OnePlayerInstructions";
+import {useRouter} from "next/navigation";
 
 const Page = () => {
     const [makeGuess, setMakeGuess] = useState(false);
     const [ready, setReady] = useState(false);
-    const { isLoading } = useGeoSearchContext();
+    const { isLoading, isError } = useGeoSearchContext();
+    const router = useRouter();
 
     useEffect(() => {
         const shouldSkip = localStorage.getItem('skipOnePlayerInstructions');
@@ -19,6 +21,12 @@ const Page = () => {
             setReady(true);
         }
     }, [setReady]);
+
+    useEffect(() => {
+        if(isError) {
+            router.replace('/Error')
+        }
+    }, [isError, router]);
 
     if(!ready) {
         return <OnePlayerInstructions setReady = {setReady} />

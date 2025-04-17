@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/app/components/Header";
 import { GeoSearchDataProvider } from "./context/GeoSearchDataProvider";
 import {ErrorBoundary} from "react-error-boundary";
-import {ErrorPage} from "@/app/components/ErrorPage";
+import ErrorFallback from "@/app/components/ErrorFallback";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +32,7 @@ export default function RootLayout({
           <body
               className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           >
-          <ErrorBoundary FallbackComponent={ErrorPage}>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
               <Header/>
               {children}
           </ErrorBoundary>

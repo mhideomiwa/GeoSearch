@@ -4,10 +4,11 @@ import ScoreMap from "@/app/components/ScoreMap";
 import { GeoPlace } from "@/app/Types";
 import { useGeoSearchContext } from "@/app/context/GeoSearchContextHookData";
 import Link from "next/link";
+import {router} from "next/client";
 
 const Page = () => {
     const [distance, setDistance] = useState(0);
-    const { hiderPosition, guessPosition, setHiderPosition, setIsHidden, setGuessPosition, setIsLoading } = useGeoSearchContext();
+    const { isError, hiderPosition, guessPosition, setHiderPosition, setIsHidden, setGuessPosition, setIsLoading } = useGeoSearchContext();
 
     function haversine_distance(mk1: GeoPlace, mk2: GeoPlace) {
         const R = 3958.8;
@@ -45,6 +46,12 @@ const Page = () => {
         setGuessPosition({lat: 0, lng: 0});
         setIsLoading(true);
     }
+
+    useEffect(() => {
+        if (isError) {
+            router.replace('/Error'); // Or navigate to whatever your error route is
+        }
+    }, [isError, router]);
 
     return (
         <div>

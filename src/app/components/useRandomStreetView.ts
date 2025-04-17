@@ -1,12 +1,13 @@
 import { useGeoSearchContext } from "@/app/context/GeoSearchContextHookData";
 
 export const useRandomStreetView = () => {
-    const { setHiderPosition, setIsLoading } = useGeoSearchContext();
+    const { setHiderPosition, setIsLoading, setIsError } = useGeoSearchContext();
 
     const generateHidingPosition = async (attempt: number = 1): Promise<void> => {
         if (attempt > 15) {
             console.error("Too many failed attempts");
             setIsLoading(false);
+            setIsError(true);
             return;
         }
 

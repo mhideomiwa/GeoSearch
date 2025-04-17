@@ -15,7 +15,7 @@ const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
 const StreetViewInitializer = () => {
     const map = useMap();
     const streetViewLib = useMapsLibrary('streetView');
-    const { hiderPosition } = useGeoSearchContext();
+    const { hiderPosition , setIsError} = useGeoSearchContext();
     const { generateHidingPosition } = useRandomStreetView();
 
     const hasGenerated = useRef(false);
@@ -23,30 +23,39 @@ const StreetViewInitializer = () => {
     useEffect(() => {
         if (!map || !streetViewLib) return;
 
+        const streetView = map.getStreetView();
+        const streetViewService = new google.maps.StreetViewService();
+
         if ((!hiderPosition || (hiderPosition.lat === 0 && hiderPosition.lng === 0)) && !hasGenerated.current) {
             hasGenerated.current = true;
-            // console.log("Generating new hiding position...");
             generateHidingPosition();
             return;
         }
 
         if (hiderPosition && hiderPosition.lat !== 0 && hiderPosition.lng !== 0) {
-            const streetView = map.getStreetView();
-            if (!streetView) {
-                console.error("No street view found");
-                return;
-            }
-            streetView.setPosition(hiderPosition);
-            streetView.setPov({ heading: 0, pitch: 0 });
-            streetView.setOptions({
-                addressControl: false,
-                showRoadLabels: false,
-                enableCloseButton: false
-            });
-            streetView.setVisible(true);
-        }
+            const location = { location: hiderPosition, radius: 50 };
 
+            streetViewService.getPanorama(location, (data, status) => {
+                // console.log("Panorama status:", status, "Data:", data); //For testing
+
+                if (status !== 'OK') {
+                    console.error("Street View data not available", status);
+                    setIsError(true); // This should trigger your Error page
+                    alert("Setting error: "+status)
+                }
+
+                streetView.setPosition(hiderPosition);
+                streetView.setPov({ heading: 0, pitch: 0 });
+                streetView.setOptions({
+                    addressControl: false,
+                    showRoadLabels: false,
+                    enableCloseButton: false,
+                });
+                streetView.setVisible(true);
+            });
+        }
     }, [map, streetViewLib, hiderPosition, generateHidingPosition]);
+
 
     return null;
 };

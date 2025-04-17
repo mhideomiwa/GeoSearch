@@ -7,6 +7,8 @@ export type GeoSearchDataContextType = {
     setIsHidden: (isHidden: boolean) => void;
     guessPosition?: GeoPlace;
     setGuessPosition: (guessPosition: GeoPlace) => void;
+    isError: boolean;
+    setIsError: (isError: boolean) => void;
 };
 export interface GeoPlace {
     lat: number;
