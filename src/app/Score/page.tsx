@@ -48,19 +48,29 @@ const Page = () => {
 
     return (
         <div>
-            <div className="relative w-full" style={{ height: 'calc(100vh - 70px)' }}>
+            <div className="relative w-full" style={{ height: 'calc(100vh - 108px)' }}>
                 <ScoreMap />
             </div>
-            <div className="absolute bottom-1/8 left-1/2 -translate-x-1/2 bg-black bg-opacity-70 px-4 py-2 rounded-2xl text-white">
-                <h1 className="text-xl font-semibold">Distance: {distance} Miles</h1>
+            <div className="absolute top-1/6 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 text-white px-6 py-3 rounded-2xl shadow-lg backdrop-blur z-10">
+                <h1 className="text-2xl font-semibold tracking-wide">
+                    Distance: <span className="text-yellow-400">{distance}</span> miles
+                </h1>
             </div>
-            <div className="absolute flex bottom-1/16 left-1/2 -translate-x-1/2 justify-between">
-                <div className="flex space-x-4" onClick={reset}>
-                    <Link href="/OnePlayer" className="bg-blue-500 text-white px-4 py-2 rounded-lg button">
-                        Play Again One Player
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
+                <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 items-center">
+                    <Link
+                        href="/OnePlayer"
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl transition-all duration-200 shadow-md font-semibold hover:scale-110"
+                        onClick={reset}
+                    >
+                        One Player
                     </Link>
-                    <Link href="/TwoPlayer" className="bg-green-500 text-white px-4 py-2 rounded-lg button">
-                        Play Again Two Player
+                    <Link
+                        href="/TwoPlayer"
+                        className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-2xl transition-all duration-200 shadow-md hover:scale-110"
+                        onClick={reset}
+                    >
+                        Two Player
                     </Link>
                 </div>
             </div>

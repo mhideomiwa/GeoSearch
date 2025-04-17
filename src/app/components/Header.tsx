@@ -14,8 +14,13 @@ function Header() {
         setIsLoading(true);
     }
 
+    const resetLocalStorage = () => {
+        localStorage.getItem('skipOnePlayerInstructions');localStorage.removeItem('skipOnePlayerInstructions')
+        localStorage.getItem('skipTwoPlayerInstructions');localStorage.removeItem('skipTwoPlayerInstructions')
+    }
+
     return (
-        <div className="space-x-4 p-2.5">
+        <div className="space-x-4 p-1 flex items-center">
             <Link href='/' onClick={reset} className="flex items-center">
                 <Image src={'/logo.svg'} alt={'Map Icon'} width={100} height={100} />
                 <div>
@@ -24,6 +29,9 @@ function Header() {
             </Link>
 
 
+            <div className='bg-red-600 cursor-pointer text-white font-bold rounded-2xl' onClick={resetLocalStorage}>
+                RESET LOCAL STORAGE
+            </div>
         </div>
     );
 }

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 
-export const OnePlayerInstructions = ({ setReady }: { setReady: (ready: boolean) => void }) => {
+export const TwoPlayerInstructions = ({ setReady }: { setReady: (ready: boolean) => void }) => {
     const [showInstructions] = React.useState(true);
 
     useEffect(() => {
-        const shouldSkip = localStorage.getItem('skipOnePlayerInstructions');
+        const shouldSkip = localStorage.getItem('skipTwoPlayerInstructions');
         if (shouldSkip === 'true') {
             setReady(true); // Skip instructions and start game
         }
@@ -13,9 +13,9 @@ export const OnePlayerInstructions = ({ setReady }: { setReady: (ready: boolean)
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const isChecked = e.target.checked;
         if (isChecked) {
-            localStorage.setItem('skipOnePlayerInstructions', 'true');
+            localStorage.setItem('skipTwoPlayerInstructions', 'true');
         } else {
-            localStorage.removeItem('skipOnePlayerInstructions');
+            localStorage.removeItem('skipTwoPlayerInstructions');
         }
     };
 
@@ -33,9 +33,10 @@ export const OnePlayerInstructions = ({ setReady }: { setReady: (ready: boolean)
                 <h1 className="text-4xl font-extrabold text-center text-blue-700 mb-8">Welcome to GeoSearch</h1>
 
                 <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
-                    <p>In one player mode, you will be put in a random location. Look around and try to find clues to where you are.</p>
-                    <p>When you&#39;re ready to guess where you are, click the map icon at the bottom right of the screen.</p>
-                    <p>Click or tap on the map where you think you&#39;re located, and when you&#39;re ready, click to confirm your guess.</p>
+                    <p>In two player mode, one player will be the hider, and the other will be the seeker.</p>
+                    <p>The seeker closes their eyes while the hider finds a good hiding spot on the map.  The hider will drag the peg man from the lower right of the map onto a highlighted street.</p>
+                    <p>When the hider is ready, they confirm their guess, and let the seeker know.  If the screen is black, or the hider doesn&#39;t like the location, they can go back to the map with the arrow in the top left.</p>
+                    <p>The seeker, then uses the clues from the street view to guess where they are.  When they are ready, they can click the map icon on the bottom right of the screen to make their guess.</p>
                     <p className="font-semibold text-center">Good luck!</p>
                 </div>
 
