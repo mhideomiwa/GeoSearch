@@ -1,14 +1,23 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import ScoreMap from "@/app/components/ScoreMap";
-import { GeoPlace } from "@/app/Types";
-import { useGeoSearchContext } from "@/app/context/GeoSearchContextHookData";
+import {GeoPlace} from "@/app/Types";
+import {useGeoSearchContext} from "@/app/context/GeoSearchContextHookData";
 import Link from "next/link";
-import {router} from "next/client";
+import {useRouter} from "next/navigation";
 
 const Page = () => {
+    const router = useRouter();
     const [distance, setDistance] = useState(0);
-    const { isError, hiderPosition, guessPosition, setHiderPosition, setIsHidden, setGuessPosition, setIsLoading } = useGeoSearchContext();
+    const {
+        isError,
+        hiderPosition,
+        guessPosition,
+        setHiderPosition,
+        setIsHidden,
+        setGuessPosition,
+        setIsLoading
+    } = useGeoSearchContext();
 
     function haversine_distance(mk1: GeoPlace, mk2: GeoPlace) {
         const R = 3958.8;
@@ -32,6 +41,12 @@ const Page = () => {
         }
     }, [hiderPosition, guessPosition]);
 
+    useEffect(() => {
+        if (isError) {
+            router.replace('/Error')
+        }
+    }, [isError, router]);
+
     if (!hiderPosition || !guessPosition) {
         return (
             <div className={'bg-red-600 text-center'}>
@@ -47,18 +62,13 @@ const Page = () => {
         setIsLoading(true);
     }
 
-    useEffect(() => {
-        if (isError) {
-            router.replace('/Error'); // Or navigate to whatever your error route is
-        }
-    }, [isError, router]);
-
     return (
         <div>
-            <div className="relative w-full" style={{ height: 'calc(100vh - 108px)' }}>
-                <ScoreMap />
+            <div className="relative w-full" style={{height: 'calc(100vh - 108px)'}}>
+                <ScoreMap/>
             </div>
-            <div className="absolute top-1/6 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 text-white px-6 py-3 rounded-2xl shadow-lg backdrop-blur z-10">
+            <div
+                className="absolute top-1/6 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 text-white px-6 py-3 rounded-2xl shadow-lg backdrop-blur z-10">
                 <h1 className="text-2xl font-semibold tracking-wide">
                     Distance: <span className="text-yellow-400">{distance}</span> miles
                 </h1>

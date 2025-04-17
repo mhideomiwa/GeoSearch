@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import {
     AdvancedMarker,
     APIProvider,
@@ -7,13 +7,13 @@ import {
     Pin,
     useMap
 } from '@vis.gl/react-google-maps';
-import { useGeoSearchContext } from "@/app/context/GeoSearchContextHookData";
+import {useGeoSearchContext} from "@/app/context/GeoSearchContextHookData";
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
 
 const MarkersAndLine = () => {
     const map = useMap();
-    const { hiderPosition, guessPosition } = useGeoSearchContext();
+    const {hiderPosition, guessPosition} = useGeoSearchContext();
 
     useEffect(() => {
         if (!map || !hiderPosition || !guessPosition) return;
@@ -21,8 +21,8 @@ const MarkersAndLine = () => {
         // Draw the line
         const scoreLine = new google.maps.Polyline({
             path: [
-                { lat: hiderPosition.lat, lng: hiderPosition.lng },
-                { lat: guessPosition.lat, lng: guessPosition.lng },
+                {lat: hiderPosition.lat, lng: hiderPosition.lng},
+                {lat: guessPosition.lat, lng: guessPosition.lng},
             ],
             geodesic: true,
             strokeColor: '#facc15',
@@ -63,7 +63,7 @@ const MarkersAndLine = () => {
 };
 
 const ScoreMap = () => {
-    const { hiderPosition, guessPosition } = useGeoSearchContext();
+    const {hiderPosition, guessPosition} = useGeoSearchContext();
 
     if (!hiderPosition || !guessPosition) {
         return (
@@ -79,13 +79,13 @@ const ScoreMap = () => {
             <APIProvider apiKey={API_KEY}>
                 <Map
                     mapId="afb641b9e0b85f94"
-                    style={{ width: '100%', height: '100%' }}
+                    style={{width: '100%', height: '100%'}}
                     gestureHandling="greedy"
                     disableDefaultUI={true}
-                    defaultCenter={{ lat: 0, lng: 0 }}
+                    defaultCenter={{lat: 0, lng: 0}}
                     defaultZoom={10}
                 >
-                    <MarkersAndLine />
+                    <MarkersAndLine/>
                 </Map>
             </APIProvider>
         </div>

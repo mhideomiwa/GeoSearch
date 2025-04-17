@@ -3,17 +3,17 @@
 /*----------------------------------------------------------------------
  *                      IMPORTS
  */
-import { ReactNode, useState } from "react";
+import {ReactNode, useState} from "react";
 import {GeoSearchDataContext} from "@/app/context/GeoSearchData";
 
 //reconfigured from in-class scriptures mapped
 /*----------------------------------------------------------------------
  *                      COMPONENT
  */
-export function GeoSearchDataProvider({ children }: { children: ReactNode }) {
+export function GeoSearchDataProvider({children}: { children: ReactNode }) {
     const [isLoading, setIsLoading] = useState(true);
-    const [hiderPosition, setHiderPosition] = useState({ lat: 0, lng: 0 });
-    const [guessPosition, setGuessPosition] = useState({ lat: 0, lng: 0 });
+    const [hiderPosition, setHiderPosition] = useState({lat: 0, lng: 0});
+    const [guessPosition, setGuessPosition] = useState({lat: 0, lng: 0});
     const [isHidden, setIsHidden] = useState(false);
     const [isError, setIsError] = useState(false);
 

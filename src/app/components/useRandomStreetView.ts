@@ -1,7 +1,7 @@
-import { useGeoSearchContext } from "@/app/context/GeoSearchContextHookData";
+import {useGeoSearchContext} from "@/app/context/GeoSearchContextHookData";
 
 export const useRandomStreetView = () => {
-    const { setHiderPosition, setIsLoading, setIsError } = useGeoSearchContext();
+    const {setHiderPosition, setIsLoading, setIsError} = useGeoSearchContext();
 
     const generateHidingPosition = async (attempt: number = 1): Promise<void> => {
         if (attempt > 15) {
@@ -13,7 +13,7 @@ export const useRandomStreetView = () => {
 
         try {
             const response = await fetch('/api/random-position');
-            const { lat, lng }: { lat: number; lng: number } = await response.json();
+            const {lat, lng}: { lat: number; lng: number } = await response.json();
 
             const streetViewService = new google.maps.StreetViewService();
 
@@ -40,5 +40,5 @@ export const useRandomStreetView = () => {
         }
     };
 
-    return { generateHidingPosition };
+    return {generateHidingPosition};
 };

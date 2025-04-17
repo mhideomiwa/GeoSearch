@@ -3,8 +3,8 @@
 /*----------------------------------------------------------------------
  *                      IMPORTS
  */
-import { use } from "react";
-import { GeoSearchDataContextType } from "../Types";
+import {use} from "react";
+import {GeoSearchDataContextType} from "../Types";
 import {GeoSearchDataContext} from "./GeoSearchData";
 
 /*----------------------------------------------------------------------

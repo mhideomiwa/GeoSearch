@@ -1,17 +1,17 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import HiderMap from "@/app/components/HiderMap";
-import { useGeoSearchContext } from "../context/GeoSearchContextHookData";
+import {useGeoSearchContext} from "../context/GeoSearchContextHookData";
 import GuessView from "@/app/components/GuessView";
 import GuessMap from "@/app/components/GuessMap";
 import Image from "next/image";
-import { TwoPlayerInstructions } from "@/app/components/TwoPlayerInstructions";
-import { TwoPlayerCountDown } from "@/app/components/TwoPlayerCountDown";
+import {TwoPlayerInstructions} from "@/app/components/TwoPlayerInstructions";
+import {TwoPlayerCountDown} from "@/app/components/TwoPlayerCountDown";
 import {router} from "next/client";
 
 
 const Page = () => {
-    const { isHidden, isError } = useGeoSearchContext();
+    const {isHidden, isError} = useGeoSearchContext();
     const [makeGuess, setMakeGuess] = useState(false);
     const [ready, setReady] = useState(false);
     const [countdownFinished, setCountdownFinished] = useState(false);
@@ -41,24 +41,24 @@ const Page = () => {
         if (isError) {
             router.replace('/Error'); // Or navigate to whatever your error route is
         }
-    }, [isError, router]);
+    }, [isError]);
 
     if (!ready) {
-        return <TwoPlayerInstructions setReady={setReady} />;
+        return <TwoPlayerInstructions setReady={setReady}/>;
     }
 
     if (!showGame) {
         return (
             <div className={`transition-opacity duration-500 ${fadeOutCountdown ? 'opacity-0' : 'opacity-100'}`}>
-                <TwoPlayerCountDown onComplete={() => setCountdownFinished(true)} />
+                <TwoPlayerCountDown onComplete={() => setCountdownFinished(true)}/>
             </div>
         );
     }
 
     return (
-        <div className="relative w-full" style={{ height: 'calc(100vh - 108px)' }}>
+        <div className="relative w-full" style={{height: 'calc(100vh - 108px)'}}>
             {!isHidden ? (
-                <HiderMap />
+                <HiderMap/>
             ) : (
                 <>
                     <div
@@ -68,7 +68,7 @@ const Page = () => {
                             pointerEvents: makeGuess ? 'none' : 'auto',
                         }}
                     >
-                        <GuessView />
+                        <GuessView/>
                     </div>
 
                     <div
@@ -78,7 +78,7 @@ const Page = () => {
                             pointerEvents: makeGuess ? 'auto' : 'none',
                         }}
                     >
-                        <GuessMap />
+                        <GuessMap/>
                     </div>
 
                     <div

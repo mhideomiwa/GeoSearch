@@ -1,14 +1,14 @@
 import React from 'react';
-import { useGeoSearchContext } from "@/app/context/GeoSearchContextHookData";
-import { GeoPlace } from "@/app/Types";
+import {useGeoSearchContext} from "@/app/context/GeoSearchContextHookData";
+import {GeoPlace} from "@/app/Types";
 
-const HiderButton = ({ lat, lng }: GeoPlace) => {
-    const { setIsHidden, setHiderPosition } = useGeoSearchContext();
+const HiderButton = ({lat, lng}: GeoPlace) => {
+    const {setIsHidden, setHiderPosition} = useGeoSearchContext();
 
     function setHidingPlace() {
         if (setHiderPosition) {
             setIsHidden(true);
-            setHiderPosition({ lat, lng });
+            setHiderPosition({lat, lng});
             // console.log("Hiding place set to: ", lat, lng);
         } else {
             console.error("setHiderPosition is not defined");

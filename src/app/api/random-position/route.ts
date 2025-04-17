@@ -1,6 +1,6 @@
 // src/app/api/random-position/route.ts
-import { NextResponse } from 'next/server';
-import { XMLParser } from 'fast-xml-parser'; //recommended by chatGPT for XML parsing
+import {NextResponse} from 'next/server';
+import {XMLParser} from 'fast-xml-parser'; //recommended by chatGPT for XML parsing
 
 export async function GET() {
     let lat: number, lng: number;
@@ -21,6 +21,6 @@ export async function GET() {
         lng = Math.random() * 360 - 180;
     }
     console.log(lat, lng);
-    return NextResponse.json({ lat, lng });
+    return NextResponse.json({lat, lng});
 
 }

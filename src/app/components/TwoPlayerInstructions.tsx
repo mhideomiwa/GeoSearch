@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 
-export const TwoPlayerInstructions = ({ setReady }: { setReady: (ready: boolean) => void }) => {
+export const TwoPlayerInstructions = ({setReady}: { setReady: (ready: boolean) => void }) => {
     const [showInstructions] = React.useState(true);
 
     useEffect(() => {
@@ -34,9 +34,13 @@ export const TwoPlayerInstructions = ({ setReady }: { setReady: (ready: boolean)
 
                 <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
                     <p>In two player mode, one player will be the hider, and the other will be the seeker.</p>
-                    <p>The seeker closes their eyes while the hider finds a good hiding spot on the map.  The hider will drag the peg man from the lower right of the map onto a highlighted street.</p>
-                    <p>When the hider is ready, they confirm their guess, and let the seeker know.  If the screen is black, or the hider doesn&#39;t like the location, they can go back to the map with the arrow in the top left.</p>
-                    <p>The seeker, then uses the clues from the street view to guess where they are.  When they are ready, they can click the map icon on the bottom right of the screen to make their guess.</p>
+                    <p>The seeker closes their eyes while the hider finds a good hiding spot on the map. The hider will
+                        drag the peg man from the lower right of the map onto a highlighted street.</p>
+                    <p>When the hider is ready, they confirm their guess, and let the seeker know. If the screen is
+                        black, or the hider doesn&#39;t like the location, they can go back to the map with the arrow in
+                        the top left.</p>
+                    <p>The seeker, then uses the clues from the street view to guess where they are. When they are
+                        ready, they can click the map icon on the bottom right of the screen to make their guess.</p>
                     <p className="font-semibold text-center">Good luck!</p>
                 </div>
 

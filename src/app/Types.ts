@@ -10,6 +10,7 @@ export type GeoSearchDataContextType = {
     isError: boolean;
     setIsError: (isError: boolean) => void;
 };
+
 export interface GeoPlace {
     lat: number;
     lng: number;

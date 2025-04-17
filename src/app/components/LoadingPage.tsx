@@ -2,25 +2,25 @@
 'use client';
 
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Loader2 } from 'lucide-react'; // Spinner icon
+import {motion, AnimatePresence} from 'framer-motion';
+import {Loader2} from 'lucide-react'; // Spinner icon
 
 interface LoadingPageProps {
     isVisible: boolean;
 }
 
-export const LoadingPage = ({ isVisible }: LoadingPageProps) => {
+export const LoadingPage = ({isVisible}: LoadingPageProps) => {
     return (
         <AnimatePresence>
             {isVisible && (
                 <motion.div
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.6 }}
+                    initial={{opacity: 1}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
+                    transition={{duration: 0.6}}
                     className="absolute top-0 left-0 z-50 w-full h-full flex justify-center items-center bg-white"
                 >
-                    <Loader2 className="animate-spin h-10 w-10 text-gray-600" />
+                    <Loader2 className="animate-spin h-10 w-10 text-gray-600"/>
                 </motion.div>
             )}
         </AnimatePresence>

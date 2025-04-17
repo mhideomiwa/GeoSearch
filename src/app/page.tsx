@@ -3,7 +3,8 @@ import Link from "next/link";
 export default function Home() {
     return (
         <>
-            <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-green-400">
+            <div
+                className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-green-400">
                 <h1 className="text-5xl font-extrabold text-white mb-6 text-center">
                     Welcome to Geo Search
                 </h1>

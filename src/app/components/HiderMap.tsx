@@ -48,7 +48,7 @@ const StreetViewWatcher = () => {
 
     return (
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
-            <HiderButton lat={pegmanPosition.lat} lng={pegmanPosition.lng} />
+            <HiderButton lat={pegmanPosition.lat} lng={pegmanPosition.lng}/>
         </div>
     );
 };
@@ -65,7 +65,7 @@ const HiderMap = () => {
                 disableDefaultUI={true}
                 streetViewControl={true}
             />
-            <StreetViewWatcher />
+            <StreetViewWatcher/>
         </APIProvider>
     );
 };

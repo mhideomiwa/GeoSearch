@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 
-export const OnePlayerInstructions = ({ setReady }: { setReady: (ready: boolean) => void }) => {
+export const OnePlayerInstructions = ({setReady}: { setReady: (ready: boolean) => void }) => {
     const [showInstructions] = React.useState(true);
 
     useEffect(() => {
@@ -33,9 +33,12 @@ export const OnePlayerInstructions = ({ setReady }: { setReady: (ready: boolean)
                 <h1 className="text-4xl font-extrabold text-center text-blue-700 mb-8">Welcome to GeoSearch</h1>
 
                 <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
-                    <p>In one player mode, you will be put in a random location. Look around and try to find clues to where you are.</p>
-                    <p>When you&#39;re ready to guess where you are, click the map icon at the bottom right of the screen.</p>
-                    <p>Click or tap on the map where you think you&#39;re located, and when you&#39;re ready, click to confirm your guess.</p>
+                    <p>In one player mode, you will be put in a random location. Look around and try to find clues to
+                        where you are.</p>
+                    <p>When you&#39;re ready to guess where you are, click the map icon at the bottom right of the
+                        screen.</p>
+                    <p>Click or tap on the map where you think you&#39;re located, and when you&#39;re ready, click to
+                        confirm your guess.</p>
                     <p className="font-semibold text-center">Good luck!</p>
                 </div>
 

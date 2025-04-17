@@ -1,22 +1,22 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef} from 'react';
 import {
     APIProvider,
     Map,
     useMap,
     useMapsLibrary,
 } from '@vis.gl/react-google-maps';
-import { useGeoSearchContext } from "@/app/context/GeoSearchContextHookData";
-import { useRandomStreetView } from "@/app/components/useRandomStreetView";
+import {useGeoSearchContext} from "@/app/context/GeoSearchContextHookData";
+import {useRandomStreetView} from "@/app/components/useRandomStreetView";
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
 
 const StreetViewInitializer = () => {
     const map = useMap();
     const streetViewLib = useMapsLibrary('streetView');
-    const { hiderPosition , setIsError} = useGeoSearchContext();
-    const { generateHidingPosition } = useRandomStreetView();
+    const {hiderPosition, setIsError} = useGeoSearchContext();
+    const {generateHidingPosition} = useRandomStreetView();
 
     const hasGenerated = useRef(false);
 
@@ -33,7 +33,7 @@ const StreetViewInitializer = () => {
         }
 
         if (hiderPosition && hiderPosition.lat !== 0 && hiderPosition.lng !== 0) {
-            const location = { location: hiderPosition, radius: 50 };
+            const location = {location: hiderPosition, radius: 50};
 
             streetViewService.getPanorama(location, (data, status) => {
                 // console.log("Panorama status:", status, "Data:", data); //For testing
@@ -41,11 +41,11 @@ const StreetViewInitializer = () => {
                 if (status !== 'OK') {
                     console.error("Street View data not available", status);
                     setIsError(true); // This should trigger your Error page
-                    alert("Setting error: "+status)
+                    alert("Setting error: " + status)
                 }
 
                 streetView.setPosition(hiderPosition);
-                streetView.setPov({ heading: 0, pitch: 0 });
+                streetView.setPov({heading: 0, pitch: 0});
                 streetView.setOptions({
                     addressControl: false,
                     showRoadLabels: false,
@@ -54,7 +54,7 @@ const StreetViewInitializer = () => {
                 streetView.setVisible(true);
             });
         }
-    }, [map, streetViewLib, hiderPosition, generateHidingPosition]);
+    }, [map, streetViewLib, hiderPosition, generateHidingPosition, setIsError]);
 
 
     return null;
@@ -74,7 +74,7 @@ const GuessView = () => {
                 disableDefaultUI={true}
                 streetViewControl={true}
             >
-                <StreetViewInitializer />
+                <StreetViewInitializer/>
             </Map>
         </APIProvider>
     );
